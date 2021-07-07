@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 9000;
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello museum!");
 });
 
 app.listen(port, () => {
@@ -89,3 +89,6 @@ client.connect((err) => {
       });
   });
 });
+
+// git push heroku main
+// heroku git:remote -a salty-inlet-50152
