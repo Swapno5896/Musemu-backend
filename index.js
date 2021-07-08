@@ -1,16 +1,22 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
 require("dotenv").config();
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static("doctors"));
+app.use(fileUpload());
 const port = process.env.PORT || 9000;
 
 app.get("/", (req, res) => {
-  res.send("Hello museum!");
+  res.send("Hello medical care!");
 });
 
+app.get("/a", (req, res) => {
+  res.send("Hello medical care!");
+});
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
@@ -30,13 +36,15 @@ client.connect((err) => {
 
 
   // post multiple Events
-  app.post("/addEvent", (req, res) => {
-    const fakeBlog = req.body;
-    // console.log(fakeBlog);
-    eventsCollection.insertOne(fakeBlog).then((result) => {
-      console.log(result.insertedCount);
-    });
-  });
+  // app.post("/addEvent", (req, res) => {
+  //   const file = req.files
+  //   console.log(file)
+  //   // const fakeBlog = req.body;
+  //   // // console.log(fakeBlog);
+  //   // eventsCollection.insertOne(fakeBlog).then((result) => {
+  //   //   console.log(result.insertedCount);
+  //   // });
+  // });
 
   // post multiple Events
   app.post("/addGallary", (req, res) => {
